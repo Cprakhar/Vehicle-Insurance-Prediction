@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: src
+Version: 1.0.0
+Summary: An MLOps project for productionising models
+Author: pchhalotre
+Author-email: pchhalotre <chhalotreprakhar00@gmail.com>
+Dynamic: author
