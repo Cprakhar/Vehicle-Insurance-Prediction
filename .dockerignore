@@ -1,0 +1,7 @@
+artifacts/
+logs/
+src.egg-info/
+.env
+.gitignore
+demo.py
+notebook/
