@@ -9,6 +9,8 @@ from src.exception import MyException
 
 class VehicleData:
 
+    '''This class is used to fetch the data from the MongoDB database and convert it into a pandas DataFrame.'''
+
     def __init__(self) -> None:
         try:
             self.mongodb_client = MongoDBClient(database_name=DB_NAME)
@@ -16,6 +18,9 @@ class VehicleData:
             raise MyException(err, sys)
         
     def export_collection(self, collection_name: str, database_name: Optional[str] = None) -> pd.DataFrame:
+
+        '''This method is used to fetch the data from the MongoDB database and convert it into a pandas DataFrame.'''
+
         try:
             if database_name is None:
                 collection = self.mongodb_client.database.get_collection(collection_name)
@@ -25,8 +30,8 @@ class VehicleData:
             print('Fetching data from mongoDB...')
             df = pd.DataFrame(list(collection.find()))
             print(f'Data located with len: {len(df)}')
-            if 'id' in df.columns.to_list():
-                df.drop(columns='id', axis=1)
+            if '_id' in df.columns.to_list():
+                df.drop(columns='_id', axis=1, inplace=True)
             df.replace({'na': np.nan}, inplace=True)
             return df
         

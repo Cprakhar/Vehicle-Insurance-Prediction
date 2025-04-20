@@ -12,12 +12,26 @@ from src.data_access.vehicle_data import VehicleData
 
 class DataIngestion:
     def __init__(self, data_ingestion_config: DataIngestionConfig = DataIngestionConfig()):
+
+        '''
+        Parameters:
+        ----------
+        data_ingestion_config: DataIngestionConfig
+            Configuration for data ingestion
+        '''
+
         try:
             self.data_ingestion_config = data_ingestion_config
         except Exception as err:
             raise MyException(err, sys) from err
 
     def export_data_into_feature_store(self) -> DataFrame:
+
+        '''
+        This method is used to export the data from the MongoDB database and save it into the feature store.
+        It fetches the data from the MongoDB database and converts it into a pandas DataFrame.
+        '''
+
         try:
             logging.info('Exporting data from mongoDB')
             vehicle_data = VehicleData()
@@ -34,6 +48,15 @@ class DataIngestion:
             raise MyException(err, sys) from err
         
     def split_data_as_train_test(self, dataframe: DataFrame) -> None:
+
+
+        '''
+        This method is used to split the data into training and testing datasets.
+        Parameters:
+        ----------
+        dataframe: DataFrame
+            The dataframe to be split into train and test datasets.
+        '''
 
         logging.info('Entered the split_data_as_train_test method of DataIngestion class')
         try:
@@ -53,6 +76,18 @@ class DataIngestion:
             raise MyException(err, sys) from err
         
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
+
+        '''
+        This method is used to initiate the data ingestion process.
+        It fetches the data from the MongoDB database and saves it in the feature store.
+        It also splits the data into training and testing datasets.
+        Returns:
+        -------
+        DataIngestionArtifact
+            The artifact containing the file paths of the training and testing datasets.
+        '''
+
+
         logging.info('Entered the initiate_data_ingestion method of DataIngestion class')
 
         try:

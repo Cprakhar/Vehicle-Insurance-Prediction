@@ -11,6 +11,8 @@ from src.constants import DB_NAME, DB_CONNECTION_STRING
 ca = certifi.where()
 
 class MongoDBClient:
+
+    '''This class is used to connect to the MongoDB database.'''
     
     client = None
 
