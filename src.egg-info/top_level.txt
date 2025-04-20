@@ -1,1 +1,7 @@
+artifacts
+config
+logs
+notebook
 src
+static
+templates
