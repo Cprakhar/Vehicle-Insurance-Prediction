@@ -6,7 +6,7 @@ WORKDIR /app
 # Copy the requirements file into the container
 COPY . /app
 
-RUN apk install g++ musl-dev python3-dev linux-headers
+RUN apk add g++ musl-dev python3-dev linux-headers
 
 # Install the required packages
 RUN pip install -r requirements.txt
