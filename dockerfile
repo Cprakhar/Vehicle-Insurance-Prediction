@@ -1,4 +1,4 @@
-FROM python:apline
+FROM python:alpine
 
 # Set the working directory
 WORKDIR /app
@@ -6,8 +6,10 @@ WORKDIR /app
 # Copy the requirements file into the container
 COPY . /app
 
+RUN apk install g++ musl-dev python3-dev linux-headers
+
 # Install the required packages
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 5000
