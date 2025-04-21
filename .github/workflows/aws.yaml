@@ -56,6 +56,17 @@ jobs:
         with:
             mask-password: 'false'
 
+      - name: Stop any container using port 5000
+        run: |
+          CONTAINER_IDS=$(docker ps --filter "publish=5000" --format "{{.ID}}")
+              if [ ! -z "$CONTAINER_IDS" ]; then
+                echo "Stopping containers using port 5000..."
+                docker stop $CONTAINER_IDS
+                docker rm $CONTAINER_IDS
+              else
+                echo "No containers using port 5000"
+              fi
+
       - name: Run Docker Image to serve users
         run: |
          docker run -d -e AWS_ACCESS_KEY="${{ secrets.AWS_ACCESS_KEY }}" -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" -e AWS_REGION="${{ secrets.AWS_REGION }}" -e DB_URL="${{ secrets.DB_URL }}" -p 5000:5000 "${{ steps.login-ecr.outputs.registry }}"/"${{ secrets.ECR_REPO }}":latest
