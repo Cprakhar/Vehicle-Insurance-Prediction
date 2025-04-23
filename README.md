@@ -12,7 +12,7 @@ Robust, production-ready machine learning pipeline for **Vehicle Insurance Predi
 - 🤖 Model training, evaluation, and deployment to AWS S3
 - 🧪 Exception handling, logging, and config management
 - 🚀 CI/CD automation via GitHub Actions + Docker + AWS EC2
-- 🧾 Real-time prediction API using Flask
+- 🧾 Real-time prediction API using FastAPI
 - 📦 Virtual environment and dependency management
 - 📈 Clean and modular architecture using OOP principles
 
@@ -57,7 +57,7 @@ python demo.py
 # 3. Train & evaluate model
 python main.py
 
-# 4. Deploy model (Flask API or push to S3)
+# 4. Deploy model (FastAPI or push to S3)
 python app.py
 ```
 
@@ -85,7 +85,7 @@ flowchart TD
 
 ## 📦 Tech Stack
 
-- **Backend**: Python, Flask
+- **Backend**: Python, FastAPI
 - **Data Storage**: MongoDB Atlas
 - **Modeling**: Scikit-learn, Pandas
 - **Deployment**: AWS S3, EC2
@@ -126,7 +126,7 @@ flowchart TD
 
 - [x] MongoDB data ingestion
 - [x] S3 integration for model storage
-- [x] Flask-based API for real-time inference
+- [x] FastAPI-based API for real-time inference
 - [x] Dockerization
 - [x] GitHub Actions CI/CD
 
